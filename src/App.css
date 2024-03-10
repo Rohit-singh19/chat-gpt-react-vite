@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Style headers within p tags */
+.markdown-container p {
+  margin-bottom: 1rem;
+}
+/* Style lists within p tags */
+.markdown-container ul,
+.markdown-container ol {
+  margin-left: 2em; /* Adjust the margin as needed */
+}
+
+/* Style list items within p tags */
+.markdown-container li {
+  list-style-type: disc; /* Adjust the list style type as needed */
+  margin-bottom: 0.5em; /* Adjust the margin as needed */
+}
+
+/* Style links within p tags */
+.markdown-container a {
+  color: #007bff; /* Set link color */
+  text-decoration: underline; /* Add underline to links */
+}
+
+/* Style other elements within p tags as needed */
+.markdown-container em {
+  font-style: italic;
+}
+
+.markdown-container strong em {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.markdown-container pre {
+  background-color: black;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+
+  width: 100%;
+  overflow: auto;
+}
