@@ -1,20 +1,30 @@
-import AppBar from "./Pages/AppBar/AppBar";
-import Chat from "./Pages/Chat/Chat";
-// import Sidebar from "./Pages/Sidebar/Sidebar";
+import { Suspense, lazy } from "react";
+import { Route, Routes } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import "./App.css";
 
+const AuthProtectedRoute = lazy(() => import("./Routes/AuthProtectedRoute"));
+const TxtToTxt = lazy(() => import("./Pages/TxtToTxt/TxtToTxt"));
+const Media2Txt = lazy(() => import("./Pages/Media2Txt/Media2Txt"));
+
+const Loading = () => {
+  return <>Loading...</>;
+};
+
 const App = () => {
   return (
-    <div className="flex gap-1 h-screen">
-      {/* <Sidebar /> */}
+    <Suspense fallback={<Loading />}>
+      <Routes>
+        <Route element={<AuthProtectedRoute />}>
+          <Route index element={<TxtToTxt />} />
 
-      <main className="flex-1 flex flex-col overflow-hidden">
-        <AppBar />
+          <Route path="media2txt" element={<Media2Txt />} />
 
-        <Chat />
-      </main>
-    </div>
+          <Route path="*" element={<Navigate to={"/"} />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 };
 
